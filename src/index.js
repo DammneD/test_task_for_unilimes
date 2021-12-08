@@ -5,8 +5,6 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 
 const renderer = new THREE.WebGL1Renderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.basicShadowMap;
 
 document.body.appendChild(renderer.domElement);
 let size;
@@ -22,10 +20,6 @@ function getSize() {
 function renderCube() {
   // eslint-disable-next-line prefer-spread
   scene.remove.apply(scene, scene.children);
-
-  const pointLight = new THREE.PointLight(0xffffff, 0.2, 100);
-  pointLight.position.set(3, 3, 3);
-  scene.add(pointLight);
 
   const geometry = new THREE.BoxGeometry(size, size, size);
   const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
@@ -51,21 +45,6 @@ function renderSphere() {
   const geometry = new THREE.SphereGeometry(size, 64, 32);
   const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
   const sphere = new THREE.Mesh(geometry, material);
-
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  scene.add(ambientLight);
-
-  const light = new THREE.SpotLight(0xffffff, 0.8, 18);
-  light.position.set(-3, 2, 0);
-  light.castShadow = true;
-  light.shadow.camera.near = 0.1;
-  light.shadow.camera.far = 5;
-
-  scene.add(light);
-
-  sphere.castShadow = true;
-  sphere.receiveShadow = false;
-
   scene.add(sphere);
 
   camera.position.z = 5;
@@ -87,7 +66,6 @@ function renderPyramid() {
   const geometry = new THREE.CylinderGeometry(0, size, size, 3, 1);
   const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
   const pyramid = new THREE.Mesh(geometry, material);
-
   scene.add(pyramid);
 
   camera.position.z = 5;
