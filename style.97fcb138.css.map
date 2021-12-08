@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"style.97fcb138.css","sourceRoot":"..\\src"}
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AACA,KACE,QAAA,CACA,UAGF,OACE,UAAA,CACA","file":"style.97fcb138.css","sourceRoot":"..\\src","sourcesContent":["// some styles will be here.\nbody {\n  margin: 0;\n  padding: 0;\n}\n\ncanvas {\n  width: 100%;\n  height: 100%;\n}\n"]}
